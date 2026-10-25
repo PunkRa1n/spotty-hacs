@@ -1,0 +1,13 @@
+{
+  "domain": "spotty",
+  "name": "Spotty Strompreis-Optimierer",
+  "after_dependencies": ["recorder"],
+  "codeowners": ["@PunkRa1n"],
+  "config_flow": true,
+  "documentation": "https://github.com/PunkRa1n/spotty-hacs",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/PunkRa1n/spotty-hacs/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

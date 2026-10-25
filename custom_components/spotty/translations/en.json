@@ -1,0 +1,247 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Choose price source",
+        "menu_options": {
+          "spotty": "Spotty",
+          "custom": "Custom URL (JSON/CSV)"
+        }
+      },
+      "spotty": {
+        "title": "Spotty",
+        "data": {
+          "name": "Name",
+          "url": "URL"
+        },
+        "data_description": {
+          "name": "Becomes the prefix of all entity IDs.",
+          "url": "The full URL from your Spotty account incl. key."
+        }
+      },
+      "custom": {
+        "title": "Custom price source",
+        "data": {
+          "name": "Name",
+          "url": "URL",
+          "token": "Token (optional)",
+          "token_header": "Token header",
+          "data_key": "JSON data path (optional)",
+          "time_field": "Time field (optional)",
+          "price_field": "Price field (optional)",
+          "price_factor": "Factor to ct/kWh"
+        },
+        "data_description": {
+          "name": "Becomes the prefix of all entity IDs.",
+          "url": "Returns JSON or CSV. A token may also be part of the URL.",
+          "token": "Sent as 'Bearer <token>' if the header is 'Authorization'.",
+          "token_header": "E.g. 'Authorization' or 'X-API-Key'.",
+          "data_key": "Only needed for nested lists, e.g. 'data' or 'result.prices'.",
+          "time_field": "Leave empty for auto-detection (from, start, datetime …).",
+          "price_field": "Leave empty for auto-detection (price, value, marketprice …).",
+          "price_factor": "1 = ct/kWh · 100 = EUR/kWh · 0.1 = EUR/MWh"
+        }
+      },
+      "reconfigure": {
+        "title": "Change price source",
+        "data": {
+          "name": "Name",
+          "url": "URL",
+          "token": "Token (optional)",
+          "token_header": "Token header",
+          "data_key": "JSON data path (optional)",
+          "time_field": "Time field (optional)",
+          "price_field": "Price field (optional)",
+          "price_factor": "Factor to ct/kWh"
+        },
+        "data_description": {
+          "name": "Becomes the prefix of all entity IDs.",
+          "url": "Returns JSON or CSV. A token may also be part of the URL.",
+          "token": "Sent as 'Bearer <token>' if the header is 'Authorization'.",
+          "token_header": "E.g. 'Authorization' or 'X-API-Key'.",
+          "data_key": "Only needed for nested lists, e.g. 'data' or 'result.prices'.",
+          "time_field": "Leave empty for auto-detection (from, start, datetime …).",
+          "price_field": "Leave empty for auto-detection (price, value, marketprice …).",
+          "price_factor": "1 = ct/kWh · 100 = EUR/kWh · 0.1 = EUR/MWh"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Fetch failed. Check URL/token.",
+      "invalid_format": "Response not readable. Set data path or time/price field.",
+      "no_data": "The source returns no prices."
+    },
+    "abort": {
+      "already_configured": "This URL is already configured.",
+      "reconfigure_successful": "Price source updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Devices",
+        "menu_options": {
+          "add_device": "Add device",
+          "edit_device": "Edit device",
+          "remove_device": "Remove device"
+        }
+      },
+      "add_device": {
+        "title": "Add device",
+        "description": "Then learn the profile via the 'Learn profile' switch or one of the actions.",
+        "data": {
+          "name": "Name",
+          "power_entity": "Power sensor",
+          "standby_w": "Standby limit",
+          "tail_min": "Trailing time when learning",
+          "finish_by": "Finish by (optional)"
+        },
+        "data_description": {
+          "power_entity": "Sensor in W or kW, e.g. from a smart plug.",
+          "standby_w": "Everything below counts as off.",
+          "tail_min": "How long the device must stay below standby before a run counts as finished.",
+          "finish_by": "The run must be finished by this time, e.g. 07:00."
+        }
+      },
+      "edit_device": {
+        "title": "Edit device",
+        "data": {
+          "device": "Device"
+        }
+      },
+      "device_form": {
+        "title": "{name}",
+        "data": {
+          "name": "Name",
+          "power_entity": "Power sensor",
+          "standby_w": "Standby limit",
+          "tail_min": "Trailing time when learning",
+          "finish_by": "Finish by (optional)"
+        },
+        "data_description": {
+          "power_entity": "Sensor in W or kW, e.g. from a smart plug.",
+          "standby_w": "Everything below counts as off.",
+          "tail_min": "How long the device must stay below standby before a run counts as finished.",
+          "finish_by": "The run must be finished by this time, e.g. 07:00."
+        }
+      },
+      "remove_device": {
+        "title": "Remove device",
+        "description": "The learned profile is deleted as well.",
+        "data": {
+          "devices": "Devices"
+        }
+      }
+    },
+    "error": {
+      "name_exists": "Name already in use",
+      "invalid_name": "Invalid name"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "current_price": {
+        "name": "Current price"
+      },
+      "current_price_eur": {
+        "name": "Current price EUR"
+      },
+      "next_price": {
+        "name": "Next price"
+      },
+      "today_min_price": {
+        "name": "Lowest price today"
+      },
+      "today_min_time": {
+        "name": "Time of lowest price"
+      },
+      "today_max_price": {
+        "name": "Highest price today"
+      },
+      "today_max_time": {
+        "name": "Time of highest price"
+      },
+      "threshold": {
+        "name": "Price threshold"
+      },
+      "cheap_block_start": {
+        "name": "Cheap period start"
+      },
+      "cheap_block_end": {
+        "name": "Cheap period end"
+      },
+      "cheap_block_duration": {
+        "name": "Cheap period duration"
+      },
+      "cheap_block_avg_price": {
+        "name": "Cheap period average"
+      },
+      "forecast": {
+        "name": "Price forecast"
+      },
+      "optimal_start": {
+        "name": "Optimal start"
+      },
+      "profile_status": {
+        "name": "Load profile",
+        "state": {
+          "no_profile": "No profile",
+          "learning": "Learning",
+          "ready": "Ready"
+        }
+      }
+    },
+    "binary_sensor": {
+      "cheapest_interval": {
+        "name": "Cheapest interval"
+      },
+      "cheap_block_active": {
+        "name": "Cheap period active"
+      }
+    },
+    "number": {
+      "threshold_percent": {
+        "name": "Price threshold percent"
+      }
+    },
+    "switch": {
+      "learn": {
+        "name": "Learn profile"
+      }
+    }
+  },
+  "services": {
+    "import_profile": {
+      "name": "Import profile from CSV",
+      "description": "Reads a HA history export (entity_id,state,last_changed).",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "The Spotty device."
+        },
+        "path": {
+          "name": "Path",
+          "description": "Relative to /config."
+        }
+      }
+    },
+    "learn_from_history": {
+      "name": "Learn profile from history",
+      "description": "Reads a past run once from the recorder and stores it permanently.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "The Spotty device."
+        },
+        "start": {
+          "name": "Start",
+          "description": "Shortly before the run started."
+        },
+        "end": {
+          "name": "End",
+          "description": "After the run ended."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Preisquelle wählen",
+        "menu_options": {
+          "spotty": "Spotty",
+          "custom": "Eigene URL (JSON/CSV)"
+        }
+      },
+      "spotty": {
+        "title": "Spotty",
+        "data": {
+          "name": "Name",
+          "url": "URL"
+        },
+        "data_description": {
+          "name": "Wird Präfix aller Entity-IDs. 'Spotty' ergibt sensor.spotty_aktueller_strompreis.",
+          "url": "Die komplette URL aus deinem Spotty-Konto inkl. Schlüssel, z. B. https://i.spottyenergie.at/api/prices/CONSUMPTION/…?timezone=at"
+        }
+      },
+      "custom": {
+        "title": "Eigene Preisquelle",
+        "data": {
+          "name": "Name",
+          "url": "URL",
+          "token": "Token (optional)",
+          "token_header": "Header für das Token",
+          "data_key": "Datenpfad im JSON (optional)",
+          "time_field": "Zeit-Feld (optional)",
+          "price_field": "Preis-Feld (optional)",
+          "price_factor": "Umrechnungsfaktor zu ct/kWh"
+        },
+        "data_description": {
+          "name": "Wird Präfix aller Entity-IDs. 'Spotty' ergibt sensor.spotty_aktueller_strompreis.",
+          "url": "Liefert JSON oder CSV. Ein Token darf auch direkt in der URL stehen.",
+          "token": "Wird als 'Bearer <Token>' gesendet, wenn der Header 'Authorization' heißt.",
+          "token_header": "Z. B. 'Authorization' oder 'X-API-Key'.",
+          "data_key": "Nur nötig, wenn die Liste verschachtelt ist, z. B. 'data' oder 'result.prices'.",
+          "time_field": "Leer lassen für automatische Erkennung (from, start, datetime …).",
+          "price_field": "Leer lassen für automatische Erkennung (price, value, marketprice …).",
+          "price_factor": "1 = Quelle liefert ct/kWh · 100 = EUR/kWh · 0,1 = EUR/MWh"
+        }
+      },
+      "reconfigure": {
+        "title": "Preisquelle ändern",
+        "data": {
+          "name": "Name",
+          "url": "URL",
+          "token": "Token (optional)",
+          "token_header": "Header für das Token",
+          "data_key": "Datenpfad im JSON (optional)",
+          "time_field": "Zeit-Feld (optional)",
+          "price_field": "Preis-Feld (optional)",
+          "price_factor": "Umrechnungsfaktor zu ct/kWh"
+        },
+        "data_description": {
+          "name": "Wird Präfix aller Entity-IDs. 'Spotty' ergibt sensor.spotty_aktueller_strompreis.",
+          "url": "Liefert JSON oder CSV. Ein Token darf auch direkt in der URL stehen.",
+          "token": "Wird als 'Bearer <Token>' gesendet, wenn der Header 'Authorization' heißt.",
+          "token_header": "Z. B. 'Authorization' oder 'X-API-Key'.",
+          "data_key": "Nur nötig, wenn die Liste verschachtelt ist, z. B. 'data' oder 'result.prices'.",
+          "time_field": "Leer lassen für automatische Erkennung (from, start, datetime …).",
+          "price_field": "Leer lassen für automatische Erkennung (price, value, marketprice …).",
+          "price_factor": "1 = Quelle liefert ct/kWh · 100 = EUR/kWh · 0,1 = EUR/MWh"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Abruf fehlgeschlagen. URL/Token prüfen.",
+      "invalid_format": "Antwort nicht lesbar. Datenpfad bzw. Zeit-/Preis-Feld angeben.",
+      "no_data": "Die Quelle liefert keine Preise."
+    },
+    "abort": {
+      "already_configured": "Diese URL ist bereits eingerichtet.",
+      "reconfigure_successful": "Preisquelle aktualisiert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Geräte",
+        "menu_options": {
+          "add_device": "Gerät hinzufügen",
+          "edit_device": "Gerät bearbeiten",
+          "remove_device": "Gerät entfernen"
+        }
+      },
+      "add_device": {
+        "title": "Gerät hinzufügen",
+        "description": "Danach das Profil einlernen: Schalter 'Profil einlernen', Aktion 'Profil aus Verlauf lernen' oder 'Profil aus CSV importieren'.",
+        "data": {
+          "name": "Name",
+          "power_entity": "Leistungssensor",
+          "standby_w": "Standby-Grenze",
+          "tail_min": "Nachlaufzeit beim Einlernen",
+          "finish_by": "Fertig bis (optional)"
+        },
+        "data_description": {
+          "power_entity": "Sensor in W oder kW, z. B. von einer Messsteckdose.",
+          "standby_w": "Alles darunter gilt als 'aus'.",
+          "tail_min": "So lange muss das Gerät unter Standby bleiben, bis ein Lauf als beendet gilt. Geschirrspüler trocknen oft lange fast stromlos – lieber großzügig.",
+          "finish_by": "Der Lauf muss bis zu dieser Uhrzeit fertig sein, z. B. 07:00."
+        }
+      },
+      "edit_device": {
+        "title": "Gerät bearbeiten",
+        "data": {
+          "device": "Gerät"
+        }
+      },
+      "device_form": {
+        "title": "{name}",
+        "data": {
+          "name": "Name",
+          "power_entity": "Leistungssensor",
+          "standby_w": "Standby-Grenze",
+          "tail_min": "Nachlaufzeit beim Einlernen",
+          "finish_by": "Fertig bis (optional)"
+        },
+        "data_description": {
+          "power_entity": "Sensor in W oder kW, z. B. von einer Messsteckdose.",
+          "standby_w": "Alles darunter gilt als 'aus'.",
+          "tail_min": "So lange muss das Gerät unter Standby bleiben, bis ein Lauf als beendet gilt. Geschirrspüler trocknen oft lange fast stromlos – lieber großzügig.",
+          "finish_by": "Der Lauf muss bis zu dieser Uhrzeit fertig sein, z. B. 07:00."
+        }
+      },
+      "remove_device": {
+        "title": "Gerät entfernen",
+        "description": "Das gelernte Profil wird mitgelöscht.",
+        "data": {
+          "devices": "Geräte"
+        }
+      }
+    },
+    "error": {
+      "name_exists": "Name bereits vergeben",
+      "invalid_name": "Ungültiger Name"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "current_price": {
+        "name": "Aktueller Strompreis"
+      },
+      "current_price_eur": {
+        "name": "Aktueller Strompreis EUR"
+      },
+      "next_price": {
+        "name": "Nächster Strompreis"
+      },
+      "today_min_price": {
+        "name": "Niedrigster Preis heute"
+      },
+      "today_min_time": {
+        "name": "Zeitpunkt niedrigster Preis"
+      },
+      "today_max_price": {
+        "name": "Höchster Preis heute"
+      },
+      "today_max_time": {
+        "name": "Zeitpunkt höchster Preis"
+      },
+      "threshold": {
+        "name": "Preisschwelle"
+      },
+      "cheap_block_start": {
+        "name": "Günstiger Zeitraum Start"
+      },
+      "cheap_block_end": {
+        "name": "Günstiger Zeitraum Ende"
+      },
+      "cheap_block_duration": {
+        "name": "Günstiger Zeitraum Dauer"
+      },
+      "cheap_block_avg_price": {
+        "name": "Günstiger Zeitraum Durchschnitt"
+      },
+      "forecast": {
+        "name": "Preisprognose"
+      },
+      "optimal_start": {
+        "name": "Optimaler Start"
+      },
+      "profile_status": {
+        "name": "Lastprofil",
+        "state": {
+          "no_profile": "Kein Profil",
+          "learning": "Lernt",
+          "ready": "Bereit"
+        }
+      }
+    },
+    "binary_sensor": {
+      "cheapest_interval": {
+        "name": "Günstigstes Intervall"
+      },
+      "cheap_block_active": {
+        "name": "Günstiger Zeitraum aktiv"
+      }
+    },
+    "number": {
+      "threshold_percent": {
+        "name": "Preisschwelle Prozent"
+      }
+    },
+    "switch": {
+      "learn": {
+        "name": "Profil einlernen"
+      }
+    }
+  },
+  "services": {
+    "import_profile": {
+      "name": "Profil aus CSV importieren",
+      "description": "Liest einen HA-Verlaufsexport (entity_id,state,last_changed) – z. B. deine alten AppDaemon-Musterdateien.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "Das Spotty-Gerät, z. B. Geschirrspüler."
+        },
+        "path": {
+          "name": "Pfad",
+          "description": "Relativ zu /config, z. B. spotty/geschirrspueler.csv"
+        }
+      }
+    },
+    "learn_from_history": {
+      "name": "Profil aus Verlauf lernen",
+      "description": "Liest einen vergangenen Lauf einmalig aus dem Recorder und speichert ihn dauerhaft. Funktioniert nur, solange der Recorder die Rohdaten noch hat.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "Das Spotty-Gerät."
+        },
+        "start": {
+          "name": "Start",
+          "description": "Kurz vor Beginn des Laufs."
+        },
+        "end": {
+          "name": "Ende",
+          "description": "Nach Ende des Laufs."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Spotty Strompreis-Optimierer",
+  "homeassistant": "2025.1.0",
+  "country": ["AT", "DE"],
+  "render_readme": true
+}

@@ -1,0 +1,28 @@
+import_profile:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: spotty
+    path:
+      required: true
+      example: "spotty/geschirrspueler.csv"
+      selector:
+        text:
+
+learn_from_history:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: spotty
+    start:
+      required: true
+      selector:
+        datetime:
+    end:
+      required: true
+      selector:
+        datetime:
